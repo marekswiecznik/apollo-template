@@ -177,6 +177,9 @@ var ApolloList = function(jQ) {
                     list.$entrybox.animate({'min-height': "0px"}, 500);
                 }
 
+                var newUrl = window.location.href.split('?')[0] + '?' + searchStateParameters;
+                history.replaceState(searchStateParameters, '', newUrl);
+
                 // fade out the spinner
                 list.$spinner.removeClass("fadeIn").addClass("fadeOut");
 
@@ -298,7 +301,8 @@ var ApolloList = function(jQ) {
                 }
 
                 // load the initial list
-                updateInnerList(list.id, "", true);
+                var searchParams = window.location.search && window.location.search.length > 1 ? window.location.search.substr(1) : "";
+                updateInnerList(list.id, searchParams, true);
             });
 
             if (m_autoLoadLists.length > 0) {
