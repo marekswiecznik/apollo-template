@@ -150,6 +150,9 @@ var ApolloList = function(jQ) {
                     // set min-height of list to avoid screen flicker
                     list.$entrybox.css("min-height", list.$entrybox.height() + 'px');
                     $oldPage.remove();
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: $(".area-body").offset().top
+                    }, 300);
                 }
 
                 // add the new elements to the list
